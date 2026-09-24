@@ -5,6 +5,13 @@ candidate:
   linkedin: ""
   start_availability: ""
 
+evidence_sources:
+  canonical_evidence_file: ""
+  personal_knowledge_base_paths: []
+  project_repositories: []
+  prior_application_archive: ""
+  explicitly_authorized_accounts: []
+
 work_authorization:
   country: ""
   status: ""
@@ -18,6 +25,17 @@ target_roles:
 work_arrangement:
   in_scope: []
   out_of_scope_by_default: []
+
+resume_preferences:
+  preferred_visual_template: ""
+  base_resume_variants: []
+  preferred_pdf_renderer: ""
+
+application_preferences:
+  referral_strategy: ""
+  referral_wait_limit_days: null
+  external_messages_require_per_application_approval: true
+  submissions_require_per_application_approval: true
 
 constraints:
   compensation_floor: ""

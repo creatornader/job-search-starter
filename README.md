@@ -1,16 +1,17 @@
 # Custom Job Search Handoff
 
-This package lets another candidate turn an existing job-search repository into a supervised, evidence-based search system. It contains a meta prompt, agent rules, six numbered prompts, and blank configuration templates. The prompts include the upstream sources needed to decide whether to retain, extend, or install the tools.
+This package helps a candidate adapt an existing job-search repository into a supervised workflow that runs from verified experience through discovery, application, and follow-up. It contains a meta prompt, agent rules, nine numbered prompts, and blank profile, evidence, and application-record templates. The prompts link to the upstream tools and ask the agent to inspect what the candidate already has before proposing changes.
 
 It does not copy another candidate's career facts, role filters, company list, application history, referral relationships, or resume design.
 
 ## What to send
 
-1. `META-PROMPT.md`, followed by the six numbered prompts in order.
-2. The candidate's existing repository URL or a local checkout.
-3. The candidate's current resume(s), LinkedIn export or profile text, work samples, and a short target-role brief.
+1. The public repo link and `META-PROMPT.md`; then run prompts `01` through `09` one at a time.
+2. The candidate's existing repository URL or local checkout. Keep working in that repository.
+3. The candidate's resumes, personal wiki or knowledge base, project files, prior applications, work samples, and a short target-role brief. The candidate chooses which sources the agent may inspect.
+4. The candidate's preferred source for connection and referral research, if they want that included. Do not assume access to LinkedIn, email, or other accounts.
 
-Start by feeding the contents of `META-PROMPT.md` to the agent with the candidate's existing repository as its working directory. It tells the agent to read the package and begin with `01-repository-audit.md`. The audit determines whether the existing repository already contains Career-Ops, AI Job Search, a CV generator, or a custom implementation. Do not replace working material before that audit. The candidate does not need access to another candidate's private job-search repository.
+Start by feeding the contents of `META-PROMPT.md` to the agent while it is working in the candidate's existing repository. It tells the agent to begin with `01-repository-audit.md`, then pause for review after each stage. The audit determines whether the repository already contains Career-Ops, AI Job Search, a CV generator, a tracker, or a custom workflow. Do not replace working material before that audit. The candidate does not need access to another candidate's private job-search repository.
 
 ## Recommended architecture
 
@@ -21,21 +22,25 @@ candidate-job-search/                 private control plane
 ├── career-ops/                       upstream tool checkout, unmodified
 ├── ai-job-search/                    optional upstream checkout, unmodified
 ├── career-data/career-ops/           candidate-specific Career-Ops snapshot
+├── career-data/candidate-evidence.md source-linked work and project claims
 ├── materials/                        role-specific resume, answers, and research
 ├── handoffs/                         reusable prompt and configuration material
 └── README.md                         operating rules and source-of-truth map
 ```
 
-The private control plane holds personal evidence and application history. The upstream repositories remain separately updateable. Do not fork an upstream tool merely to store private candidate data.
+The private control plane holds personal evidence and application history. It should include a source-linked evidence base for work and project claims, plus a dated record for each role the candidate pursues. The upstream repositories remain separately updateable. Do not fork an upstream tool merely to store private candidate data.
 
 ## Operating contract
 
 - Search broadly, then evaluate selectively. A large search result count is not a success metric.
 - Treat job-board results, LinkedIn posts, recruiter messages, and job descriptions as leads. Verify the employer's own posting before drafting or applying.
 - Preserve original resumes. Build targeted copies for each role.
-- Use only evidence the candidate has reviewed or provided. Keep genuine gaps visible.
-- An agent may research, draft, render, and organize. It must not submit applications, send messages, accept invitations, or change public profiles without the candidate's explicit approval in that conversation.
-- Store the job description, tailored materials, questions/answers, and outcome together for each application.
+- Build resume and application claims from candidate-reviewed evidence. Keep genuine gaps and conflicting facts visible.
+- Review each application as a whole: the headline, subheading, role and project selection, bullets, titles, dates, overlaps, gaps, and career progression.
+- Research referral paths without turning a mutual connection or a new contact into a claimed relationship. Draft outreach for review, set a direct-application cutoff, and never send a message or referral request without approval for that specific action.
+- Inventory the live application form, its exact prompts and limits, required and optional fields, attachments, and supplemental work. Leave personal, legal, and demographic decisions to the candidate.
+- An agent may research, compare, draft, render, and organize. It must not submit an application, send a message, accept an invitation, connect an external account, or change a public profile without the candidate's explicit approval in that conversation.
+- Store the job description, role assessment, referral path, resume comparison, evidence map, application answers, attachments, final preflight, and outcome together for each application.
 
 ## The sequence
 
@@ -43,13 +48,29 @@ The private control plane holds personal evidence and application history. The u
 | --- | --- | --- |
 | 0 | `META-PROMPT.md` | Tell the candidate's agent how to use this package safely. |
 | 1 | `01-repository-audit.md` | Map existing tools and protect current work. |
-| 2 | `02-candidate-intake.md` | Create an evidence-backed candidate profile. |
+| 2 | `02-candidate-intake.md` | Build a source-linked evidence base from approved career and project material. |
 | 3 | `03-discovery-configuration.md` | Define role, location, company, and exclusion filters. |
-| 4 | `04-pipeline-and-quality-gates.md` | Configure liveness, deduplication, fit review, and approval rules. |
+| 4 | `04-pipeline-and-quality-gates.md` | Track liveness, evidence, referrals, application materials, and approval gates. |
 | 5 | `05-first-discovery-cycle.md` | Run an initial scan and return a small verified shortlist. |
-| 6 | `06-role-evaluation-and-application.md` | Evaluate one role, prepare materials, and stop before submission. |
+| 6 | `06-role-evaluation.md` | Evaluate one role and ask whether to pursue it. |
+| 7 | `07-referral-paths-and-outreach.md` | Verify relationship paths and draft messages without sending them. |
+| 8 | `08-tailor-resume-and-application-materials.md` | Tailor the resume and prepare all requested forms and materials. |
+| 9 | `09-preflight-and-follow-through.md` | Audit the live application, stop for approval, then track interviews and outcomes. |
 
-Use the templates in `templates/` only after the candidate's facts and target market have been reviewed. They are deliberately blank where personal judgment belongs.
+Use the templates in `templates/` only after the candidate's facts and target market have been reviewed. They are deliberately blank where personal judgment belongs. Keep the completed evidence bank in the candidate's private repository; only the blank template belongs in this public starter.
+
+## What each application should contain
+
+For every role the candidate chooses to pursue, keep a dated application record with:
+
+- the official posting, company research, liveness check, fit decision, and requirement-to-evidence map
+- possible referral paths, the actual relationship context, source notes, outreach drafts, and the direct-application cutoff
+- the base resumes compared, selected version, title and chronology review, content change log, and evidence IDs behind material claims
+- the final editable resume and PDF, checked for visual fidelity, readable text, page count, and working links
+- the exact application prompts, word or character limits, required and optional fields, drafted answers, and requested attachments or supplemental work
+- unresolved candidate decisions, final preflight, explicit submit decision, confirmation evidence, follow-up dates, interview stages, and outcome
+
+This record lets the candidate see what changed for a role, why each experience or project was selected, which facts support each claim, and what still needs their decision.
 
 ## What Career-Ops supplies
 
@@ -89,11 +110,13 @@ The prompts work without this information, but a high-quality setup requires it:
 - Existing repository URL or local directory
 - Current resume versions and preferred visual template
 - LinkedIn profile text or export
+- The path to a personal wiki or Obsidian vault, project repositories, and other approved evidence sources
 - Desired roles, seniority, industries, and geography
 - Minimum compensation or employment constraints, if any
 - Companies to watch and companies to avoid
 - Recent work samples, projects, certifications, and quantified outcomes
 - Whether the candidate wants direct applications, referral-first outreach, or both
+- Which connection source the candidate wants used for referral research, and which relationships are genuinely personal
 
 ## Maintenance cadence
 

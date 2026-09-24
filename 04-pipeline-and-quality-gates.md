@@ -9,16 +9,18 @@ If the repository audit approved adding Career-Ops and it is not already present
 
 AI Job Search warns that forks of its public repository are public and its setup stores personal details in tracked files. If the candidate adopts it, create a private repository with the public project configured as an upstream remote. Do not put candidate data in a public fork.
 
-The pipeline must record: company, role, official URL, source, date discovered, verified liveness state, location, compensation if advertised, fit verdict, gaps, referral route, application status, next action, and links to all materials.
+The pipeline must record: company, role, official URL, source, date discovered, verified liveness state, location, compensation if advertised, fit verdict, evidence IDs and gaps, referral path and cutoff, selected resume variant, application-field completeness, application status, next action and date, and links to the dated application record.
 
 Implement or document these gates:
 
 1. Official-source liveness: a search result or social post is only a lead. Confirm the employer's own posting and an active application path before evaluation.
 2. Deduplication: prevent duplicate pipeline entries and direct-plus-agency double applications.
-3. Evidence check: every resume bullet and form answer must have a source in the candidate evidence layer.
-4. Material check: preserve the chosen resume template, render the final document, and check the PDF text layer before it is marked ready.
-5. Human approval: stop before every submission, outreach message, referral request, or calendar action.
-6. Outcome learning: preserve submitted materials and record interviews, rejections, offers, silence, and actionable feedback.
+3. Evidence check: every resume claim, application answer, and interview story must map to the candidate evidence base. Mark claims candidate-confirmed when no source document exists.
+4. Resume check: compare the tailored resume with all relevant base variants. Review the whole career story, including titles, dates, overlaps, gaps, and project choices. Preserve the candidate's template and inspect both the rendered PDF and text layer.
+5. Application check: inspect the live form and inventory every required and useful optional question, field, limit, attachment, and supplemental task. Leave personal, legal, and demographic decisions to the candidate.
+6. Referral check: distinguish actual relationships from mutual connections and public profile signals. Set a direct-application cutoff so a referral route does not stall a live application.
+7. Human approval: stop before each message, referral request, external-account connection, calendar action, or application submission. Approval for one action does not authorize another.
+8. Outcome learning: preserve the exact submitted materials and confirmation, then record interviews, rejections, offers, withdrawals, follow-ups, and candidate-reviewed lessons.
 
 Add a weekly-review view that returns only the five most promising new roles and explains why each is worth investigating or skipping.
 ```
