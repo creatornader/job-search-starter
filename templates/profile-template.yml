@@ -1,0 +1,32 @@
+# Fill this from reviewed candidate material. Do not copy another candidate's facts.
+candidate:
+  full_name: ""
+  location: ""
+  linkedin: ""
+  start_availability: ""
+
+work_authorization:
+  country: ""
+  status: ""
+  future_sponsorship_required: null
+
+target_roles:
+  primary: []
+  secondary: []
+  exploratory: []
+
+work_arrangement:
+  in_scope: []
+  out_of_scope_by_default: []
+
+constraints:
+  compensation_floor: ""
+  employment_types: []
+  industries_to_prioritize: []
+  industries_to_avoid: []
+
+narrative:
+  headline: ""
+  transition_story: ""
+  strengths: []
+  proof_points: []

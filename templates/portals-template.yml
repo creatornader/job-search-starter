@@ -1,0 +1,22 @@
+# Replace every example before enabling a broad search.
+title_filter:
+  positive: []
+  negative: []
+  seniority_boost: []
+
+location_filter:
+  allow: []
+  block: []
+
+search_queries:
+  - name: "Primary role family"
+    query: 'site:jobs.ashbyhq.com OR site:job-boards.greenhouse.io OR site:jobs.lever.co "[TITLE VARIANT]" "[DOMAIN]"'
+    enabled: false
+
+tracked_companies:
+  - name: "Example company"
+    careers_url: "https://example.com/careers"
+    enabled: false
+    notes: "Why this company belongs on the watchlist."
+
+avoid_companies: []
